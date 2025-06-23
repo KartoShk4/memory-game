@@ -11,9 +11,15 @@ class App extends React.Component {
     }
 
     prepareCards() {
+        let id = 1;
         // Повторили декструктуризацию, для того что бы получить карточки 2 раза
         return [...config.cards, ...config.cards]
-            .sort(() => Math.random() - 0.5);
+            .sort(() => Math.random() - 0.5)
+            .map(item =>({...item, id: id++}));
+    }
+
+    choiceCardHandler(item) {
+        console.log(item.name);
     }
 
     render() {
@@ -27,7 +33,7 @@ class App extends React.Component {
                     <div className="cards">
                         {
                             this.state.cards.map(item => (
-                                <Card item={item} key={item.id}/>
+                                <Card item={item} key={item.id} onChoice={this.choiceCardHandler}/>
                             ))
                         }
                     </div>
