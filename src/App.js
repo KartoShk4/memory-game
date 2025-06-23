@@ -1,6 +1,7 @@
 import './App.css';
 import config from './config';
 import React from 'react';
+import Card from "./components/Card";
 
 class App extends React.Component {
 
@@ -26,9 +27,7 @@ class App extends React.Component {
                     <div className="cards">
                         {
                             this.state.cards.map(item => (
-                                <div className='card' key={item.id}>
-                                    <img src={'/images/' + item.image} alt={item.name}/>
-                                </div>
+                                <Card item={item} key={item.id}/>
                             ))
                         }
                     </div>
