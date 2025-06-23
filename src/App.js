@@ -1,25 +1,41 @@
-import logo from './logo.svg';
 import './App.css';
+import config from './config';
+import React from 'react';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends React.Component {
+
+    constructor() {
+        super();
+        this.state = {cards: this.prepareCards(), clicks: 0}
+    }
+
+    prepareCards() {
+        // Повторили декструктуризацию, для того что бы получить карточки 2 раза
+        return [...config.cards, ...config.cards]
+            .sort(() => Math.random() - 0.5);
+    }
+
+    render() {
+        return (
+            <div className="App">
+                <header className='header'>Memory Game</header>
+                <div className='game'>
+                    <div className="score">
+                        Нажатий: {this.state.clicks}
+                    </div>
+                    <div className="cards">
+                        {
+                            this.state.cards.map(item => (
+                                <div className='card' key={item.id}>
+                                    <img src={'/images/' + item.image} alt={item.name}/>
+                                </div>
+                            ))
+                        }
+                    </div>
+                </div>
+            </div>
+        );
+    }
 }
 
 export default App;
