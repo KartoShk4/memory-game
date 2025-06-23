@@ -10,6 +10,7 @@ class Card extends React.Component {
     }
 
     cardClickHandler(item) {
+        // Функционал открытия/закрытия карточки
         this.setState({isOpened: !this.state.isOpened});
         this.props.onChoice(item);
     }

@@ -20,6 +20,7 @@ class App extends React.Component {
     }
 
     choiceCardHandler(item) {
+        this.setState({clicks: this.state.clicks + 1});
         console.log(item.name);
     }
 
@@ -34,7 +35,7 @@ class App extends React.Component {
                     <div className="cards">
                         {
                             this.state.cards.map(item => (
-                                <Card item={item} key={item.id} onChoice={this.choiceCardHandler}/>
+                                <Card item={item} key={item.id} onChoice={this.choiceCardHandler.bind(this)}/>
                             ))
                         }
                     </div>
