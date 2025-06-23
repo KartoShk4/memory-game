@@ -15,7 +15,8 @@ class App extends React.Component {
         // Повторили декструктуризацию, для того что бы получить карточки 2 раза
         return [...config.cards, ...config.cards]
             .sort(() => Math.random() - 0.5)
-            .map(item =>({...item, id: id++}));
+            // Добавили к каждому id +1 что бы не возникало дублирование id
+            .map(item => ({...item, id: id++}));
     }
 
     choiceCardHandler(item) {
