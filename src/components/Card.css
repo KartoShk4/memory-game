@@ -1,0 +1,15 @@
+.card {
+    width: 100px;
+    height: 100px;
+    background: #3a334c;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.card img {
+    width: 100%;
+    height: 100%;
+}
