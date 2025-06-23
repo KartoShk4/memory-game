@@ -2,22 +2,13 @@ import React from 'react';
 import './Card.css';
 
 class Card extends React.Component {
-
-    constructor() {
-        super();
-        // Указываем что по умолчанию карточка закрыта
-        this.state = {isOpened: false};
-    }
-
     cardClickHandler(item) {
-        // Функционал открытия/закрытия карточки
-        this.setState({isOpened: !this.state.isOpened});
         this.props.onChoice(item);
     }
 
     render() {
         return (
-            <div className={'card ' + (this.state.isOpened ? 'opened' : 'closed')}
+            <div className={'card ' + (this.props.isShowed ? 'opened' : 'closed')}
                  onClick={this.cardClickHandler.bind(this, this.props.item)}>
                 <div className="card-inner card-front">
                     <img src={'/images/' + this.props.item.image} alt={this.props.item.name}/>
